@@ -20,7 +20,7 @@ const imagens = [
         titulo: "Honda Civic",
         descricao: "Sedan esportivo",
         categoria: "Carros",
-        arquivo: "imagens/civic.jpg"
+        arquivo: "imagens/Civic.jpg"
     },
     {
         titulo: "Praia",
