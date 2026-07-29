@@ -4,6 +4,12 @@
 
 // Banco de imagens
 const imagens = [
+       {
+        titulo: "Dragon ball Super",
+        descricao: "Superiyajin",
+        categoria: "Anime",
+        arquivo: "imagens/anime.jpg"
+    },
       {
         titulo: "Flores",
         descricao: "Só não deixa a mulher ver, se não já sabe...",
