@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria Premium</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        <i class="fa-solid fa-camera-retro"></i>
+        <h1>Galeria Premium</h1>
+    </div>
+
+    <div class="pesquisa">
+
+        <i class="fa-solid fa-magnifying-glass"></i>
+
+        <input
+        type="text"
+        id="pesquisa"
+        placeholder="Pesquisar imagens...">
+
+    </div>
+
+    <button id="tema">
+        <i class="fa-solid fa-moon"></i>
+    </button>
+
+</header>
+
+
+<section class="dashboard">
+
+    <div class="box">
+        <h2 id="totalFotos">0</h2>
+        <span>Fotos</span>
+    </div>
+
+    <div class="box">
+        <h2 id="totalFavoritos">0</h2>
+        <span>Favoritos</span>
+    </div>
+
+    <div class="box">
+        <h2 id="categoriaAtual">Todas</h2>
+        <span>Categoria</span>
+    </div>
+
+</section>
+
+
+<section class="categorias">
+
+<button class="ativo">Todas</button>
+
+<button>Carros</button>
+
+<button>Futebol</button>
+
+<button>Natureza</button>
+
+<button>Religião</button>
+
+<button>Praias</button>
+
+<button>Anime</button>
+
+</section>
+
+
+<main id="galeria">
+
+</main>
+
+
+<div id="lightbox">
+
+<div class="conteudo">
+
+<button id="fechar">
+
+<i class="fa-solid fa-xmark"></i>
+
+</button>
+
+<img id="imagemExpandida">
+
+<h2 id="tituloImagem"></h2>
+
+<p id="descricaoImagem"></p>
+
+<button id="favoritar">
+
+<i class="fa-solid fa-heart"></i>
+
+Favoritar
+
+</button>
+
+</div>
+
+</div>
+
+
+<footer>
+
+<p>
+
+© 2026 Galeria Premium
+
+</p>
+
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
