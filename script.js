@@ -6,7 +6,7 @@
 const imagens = [
        {
         titulo: "Dragon ball Super",
-        descricao: "Superiyajin",
+        descricao: "Superiyajin, igual o @kayck.o1_",
         categoria: "Anime",
         arquivo: "imagens/anime.jpg"
     },
@@ -18,7 +18,7 @@ const imagens = [
     },
       {
         titulo: "Paisagem Diferenciada",
-        descricao: "Paisagem que não tem igual",
+        descricao: "Paisagem boa para pegar a mãe dos seus amigos",
         categoria: "Natureza",
         arquivo: "imagens/paisagem daora.jpg"
     },
@@ -30,19 +30,19 @@ const imagens = [
     },
     {
         titulo: "Neymar",
-        descricao: "Craque brasileiro",
+        descricao: "O mais lindo e melhor",
         categoria: "Futebol",
         arquivo: "imagens/ney.jpg"
     },
     {
         titulo: "Bíblia",
-        descricao: "A Palavra de Deus",
+        descricao: "A Palavra de Deus, eita glória",
         categoria: "Religião",
         arquivo: "imagens/bilbia.jpg"
     },
     {
         titulo: "Honda Civic",
-        descricao: "Sedan esportivo",
+        descricao: "Sonho...",
         categoria: "Carros",
         arquivo: "imagens/Civic.jpg"
     },
@@ -54,7 +54,7 @@ const imagens = [
     },
     {
         titulo: "Girassol",
-        descricao: "Natureza",
+        descricao: "Dudu",
         categoria: "Natureza",
         arquivo: "imagens/girassol.jpg"
     }
