@@ -8,7 +8,7 @@ const imagens = [
         titulo: "Paisagem Diferenciada",
         descricao: "Paisagem que não tem igual",
         categoria: "Natureza",
-        arquivo: "imagens/paisagem daora.jpg"
+        arquivo: "imagens/paisagemdaora.jpg"
     },
      {
         titulo: "Civic G10 Modificado",
