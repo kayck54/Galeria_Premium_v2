@@ -4,6 +4,12 @@
 
 // Banco de imagens
 const imagens = [
+     {
+        titulo: "Civic G10 Modificado",
+        descricao: "Carro de homem cuiudo",
+        categoria: "Carros",
+        arquivo: "imagens/civicg10.jpg"
+    },
     {
         titulo: "Neymar",
         descricao: "Craque brasileiro",
