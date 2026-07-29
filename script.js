@@ -12,7 +12,7 @@ const imagens = [
     },
       {
         titulo: "Flores",
-        descricao: "Só não deixa a mulher ver, pq vc é um fudido e não vaiter dinheiro para comprar....",
+        descricao: "Só não deixa a mulher ver, pq vc é um fudido e não vaiter dinheiro para comprar... Isso se tiver mulher",
         categoria: "Natureza",
         arquivo: "imagens/flores.jpg"
     },
