@@ -5,6 +5,12 @@
 // Banco de imagens
 const imagens = [
        {
+        titulo: "Brutal...",
+        descricao: "It's over, sobrou nada pro betinha...",
+        categoria: "Todas",
+        arquivo: "imagens/images.jpg"
+    },
+       {
         titulo: "Dragon ball Super",
         descricao: "Superiyajin fortão, igual o @kayck.01_",
         categoria: "Anime",
