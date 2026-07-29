@@ -6,7 +6,7 @@
 const imagens = [
        {
         titulo: "Dragon ball Super",
-        descricao: "Superiyajin, igual o @kayck.o1_",
+        descricao: "Superiyajin, igual o @kayck.01_",
         categoria: "Anime",
         arquivo: "imagens/anime.jpg"
     },
@@ -30,7 +30,7 @@ const imagens = [
     },
     {
         titulo: "Neymar",
-        descricao: "O mais lindo e melhor",
+        descricao: "O mais lindo e melhor de todos os tempos",
         categoria: "Futebol",
         arquivo: "imagens/ney.jpg"
     },
