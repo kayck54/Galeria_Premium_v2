@@ -6,7 +6,7 @@
 const imagens = [
        {
         titulo: "Dragon ball Super",
-        descricao: "Superiyajin, igual o @kayck.01_",
+        descricao: "Superiyajin fortão, igual o @kayck.01_",
         categoria: "Anime",
         arquivo: "imagens/anime.jpg"
     },
@@ -42,7 +42,7 @@ const imagens = [
     },
     {
         titulo: "Honda Civic",
-        descricao: "Sonho...",
+        descricao: "Esse aqui é só para comprar pão",
         categoria: "Carros",
         arquivo: "imagens/Civic.jpg"
     },
