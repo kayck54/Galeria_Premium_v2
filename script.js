@@ -5,6 +5,12 @@
 // Banco de imagens
 const imagens = [
       {
+        titulo: "Flores",
+        descricao: "Só não deixa a mulher ver, se não já sabe...",
+        categoria: "Natureza",
+        arquivo: "imagens/flores.jpg"
+    },
+      {
         titulo: "Paisagem Diferenciada",
         descricao: "Paisagem que não tem igual",
         categoria: "Natureza",
