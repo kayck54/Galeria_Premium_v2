@@ -4,6 +4,12 @@
 
 // Banco de imagens
 const imagens = [
+      {
+        titulo: "Paisagem Diferenciada",
+        descricao: "Paisagem que não tem igual",
+        categoria: "Natureza",
+        arquivo: "imagens/paisagem daora.jpg"
+    },
      {
         titulo: "Civic G10 Modificado",
         descricao: "Carro de homem cuiudo",
