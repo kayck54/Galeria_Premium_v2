@@ -13,7 +13,7 @@ import {
 // ==============================
 
 const imagens = [
-     id: "anime",
+    {  id: "anime",
         titulo: "Dragon Ball Super",
         descricao: "Sayajin fortão igual o @kayck.01_",
         categoria: "Anime",
