@@ -1,0 +1,51 @@
+body{
+    margin:0;
+    background:#111318;
+    color:white;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+    padding:40px 0;
+}
+
+h1{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+    margin-bottom:40px;
+}
+
+.card{
+    background:#1b1f2a;
+    border-radius:15px;
+    padding:30px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,.25);
+}
+
+.card h2{
+    font-size:42px;
+    color:#ffc107;
+    margin:0;
+}
+
+.card p{
+    margin-top:10px;
+    font-size:18px;
+}
+
+#atividades{
+    background:#1b1f2a;
+    border-radius:15px;
+    padding:20px;
+    min-height:250px;
+}
