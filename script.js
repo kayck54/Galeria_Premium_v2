@@ -18,6 +18,7 @@ const imagens = [
         descricao: "Sayajin fortão igual o @kayck.01_",
         categoria: "Anime",
         arquivo: "imagens/anime.jpg"
+},
     {
         id: "paisagem",
         titulo: "Paisagem Diferenciada",
