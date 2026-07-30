@@ -2,6 +2,8 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/fireba
 
 import {
     getFirestore,
+    collection,
+    getDocs,
     doc,
     getDoc,
     setDoc,
@@ -26,6 +28,8 @@ const db = getFirestore(app);
 
 export {
     db,
+    collection,
+    getDocs,
     doc,
     getDoc,
     setDoc,
