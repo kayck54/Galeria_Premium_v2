@@ -16,7 +16,7 @@ const imagens = [
     {
         id: "paisagem",
         titulo: "Paisagem Diferenciada",
-        descricao: "Paisagem que não tem igual",
+        descricao: "Paisagem boa pra pegar a mãe dos seus amigos",
         categoria: "Natureza",
         arquivo: "imagens/paisagem daora.jpg"
     },
@@ -30,35 +30,35 @@ const imagens = [
     {
         id: "neymar",
         titulo: "Neymar",
-        descricao: "Craque brasileiro",
+        descricao: "O mais lindo e melhor de todos os tempos.",
         categoria: "Futebol",
         arquivo: "imagens/ney.jpg"
     },
     {
         id: "biblia",
         titulo: "Bíblia",
-        descricao: "A Palavra de Deus",
+        descricao: "A Palavra de Deus, eita gloriaa",
         categoria: "Religião",
         arquivo: "imagens/bilbia.jpg"
     },
     {
         id: "civic",
         titulo: "Honda Civic",
-        descricao: "Sedan esportivo",
+        descricao: "Esse é só pra comprar pão",
         categoria: "Carros",
         arquivo: "imagens/Civic.jpg"
     },
     {
         id: "praia",
         titulo: "Praia",
-        descricao: "Paisagem paradisíaca",
+        descricao: "Meu quintal",
         categoria: "Praias",
         arquivo: "imagens/praia.jpg"
     },
     {
         id: "girassol",
         titulo: "Girassol",
-        descricao: "Natureza",
+        descricao: "Dudu",
         categoria: "Natureza",
         arquivo: "imagens/girassol.jpg"
     }
