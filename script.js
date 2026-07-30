@@ -318,6 +318,8 @@ botaoTema.addEventListener("click", () => {
 // ==============================
 // INICIALIZAÇÃO
 // ==============================
+window.curtir = curtir;
+window.abrirLightbox = abrirLightbox;
 
 await carregarCurtidas();
 
