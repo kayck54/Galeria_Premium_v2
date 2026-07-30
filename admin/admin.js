@@ -1,40 +1,60 @@
+import {
+    db,
+    collection,
+    getDocs,
+    onSnapshot
+} from "../firebase.js";
+
 const totalCurtidas = document.getElementById("totalCurtidas");
 const maisCurtida = document.getElementById("maisCurtida");
 const atividades = document.getElementById("atividades");
 
-// Simulação (será substituída pelo Firebase)
-const dados = {
-    curtidas: [
-        { nome: "Neymar", total: 8 },
-        { nome: "Honda Civic", total: 5 },
-        { nome: "Bíblia", total: 3 },
-        { nome: "Praia", total: 2 },
-        { nome: "Girassol", total: 1 }
-    ],
-    atividades: [
-        "🕒 Alguém curtiu Neymar",
-        "🕒 Alguém curtiu Honda Civic",
-        "🕒 Alguém curtiu Bíblia",
-        "🕒 Alguém curtiu Praia",
-        "🕒 Alguém curtiu Girassol"
-    ]
-};
+async function carregarPainel() {
 
-function carregarPainel() {
+    const colecao = collection(db, "curtidas");
 
-    const soma = dados.curtidas.reduce((t, item) => t + item.total, 0);
+    onSnapshot(colecao, (snapshot) => {
 
-    totalCurtidas.textContent = soma;
+        const dados = [];
 
-    const top = dados.curtidas.sort((a, b) => b.total - a.total)[0];
+        snapshot.forEach((doc) => {
 
-    maisCurtida.textContent = top.nome;
+            dados.push(doc.data());
 
-    atividades.innerHTML = "";
+        });
 
-    dados.atividades.forEach(item => {
+        let soma = 0;
 
-        atividades.innerHTML += `<p>${item}</p>`;
+        dados.forEach(item => {
+
+            soma += item.curtidas;
+
+        });
+
+        totalCurtidas.textContent = soma;
+
+        if (dados.length > 0) {
+
+            dados.sort((a, b) => b.curtidas - a.curtidas);
+
+            maisCurtida.textContent =
+                `${dados[0].titulo} (${dados[0].curtidas})`;
+
+        } else {
+
+            maisCurtida.textContent = "-";
+
+        }
+
+        atividades.innerHTML = "";
+
+        dados.forEach(item => {
+
+            atividades.innerHTML += `
+                <p>❤️ ${item.titulo}: ${item.curtidas} curtidas</p>
+            `;
+
+        });
 
     });
 
