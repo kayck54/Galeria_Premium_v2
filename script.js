@@ -1,72 +1,73 @@
+import {
+    db,
+    doc,
+    getDoc,
+    setDoc,
+    updateDoc,
+    increment,
+    onSnapshot
+} from "./firebase.js";
+
 // ==============================
 // GALERIA PREMIUM V2
 // ==============================
 
-// Banco de imagens
 const imagens = [
-       {
-        titulo: "Brutal...",
-        descricao: "It's over, sobrou nada pro betinha...",
-        categoria: "Todas",
-        arquivo: "imagens/images.jpg"
-    },
-       {
-        titulo: "Dragon ball Super",
-        descricao: "Superiyajin fortão, igual o @kayck.01_",
-        categoria: "Anime",
-        arquivo: "imagens/anime.jpg"
-    },
-      {
-        titulo: "Flores",
-        descricao: "Só não deixa a mulher ver, pq vc é um fudido e não vai ter dinheiro para comprar... Isso se tiver mulher",
-        categoria: "Natureza",
-        arquivo: "imagens/flores.jpg"
-    },
-      {
+    {
+        id: "paisagem",
         titulo: "Paisagem Diferenciada",
-        descricao: "Paisagem boa para pegar a mãe dos seus amigos",
+        descricao: "Paisagem que não tem igual",
         categoria: "Natureza",
         arquivo: "imagens/paisagem daora.jpg"
     },
-     {
+    {
+        id: "civicg10",
         titulo: "Civic G10 Modificado",
         descricao: "Carro de homem cuiudo",
         categoria: "Carros",
         arquivo: "imagens/civicg10.jpg"
     },
     {
+        id: "neymar",
         titulo: "Neymar",
-        descricao: "O mais lindo e melhor de todos os tempos",
+        descricao: "Craque brasileiro",
         categoria: "Futebol",
         arquivo: "imagens/ney.jpg"
     },
     {
+        id: "biblia",
         titulo: "Bíblia",
-        descricao: "A Palavra de Deus, eita glória",
+        descricao: "A Palavra de Deus",
         categoria: "Religião",
         arquivo: "imagens/bilbia.jpg"
     },
     {
+        id: "civic",
         titulo: "Honda Civic",
-        descricao: "Esse aqui é só para comprar pão",
+        descricao: "Sedan esportivo",
         categoria: "Carros",
         arquivo: "imagens/Civic.jpg"
     },
     {
+        id: "praia",
         titulo: "Praia",
         descricao: "Paisagem paradisíaca",
         categoria: "Praias",
         arquivo: "imagens/praia.jpg"
     },
     {
+        id: "girassol",
         titulo: "Girassol",
-        descricao: "Dudu",
+        descricao: "Natureza",
         categoria: "Natureza",
         arquivo: "imagens/girassol.jpg"
     }
 ];
 
-// Elementos
+// ==============================
+// ELEMENTOS
+// ==============================
+
 const galeria = document.getElementById("galeria");
 const pesquisa = document.getElementById("pesquisa");
 const totalFotos = document.getElementById("totalFotos");
@@ -78,67 +79,92 @@ const imagemExpandida = document.getElementById("imagemExpandida");
 const tituloImagem = document.getElementById("tituloImagem");
 const descricaoImagem = document.getElementById("descricaoImagem");
 
-let favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
-let categoriaSelecionada = "Todas";// ==============================
-// CRIAR GALERIA
-// ==============================
+let categoriaSelecionada = "Todas";
 
-function criarGaleria(lista = imagens){
-  // ==============================
-// FAVORITOS
-// ==============================
-
-function favoritar(indice){
-
-    const nome = imagens[indice].titulo;
-
-    if(favoritos.includes(nome)){
-
-        favoritos = favoritos.filter(item => item !== nome);
-
-    }else{
-
-        favoritos.push(nome);
-
-    }
-
-    localStorage.setItem(
-        "favoritos",
-        JSON.stringify(favoritos)
-    );
-
-    criarGaleria();
-
-}
-
+const curtidas = {};
 // ==============================
 // DASHBOARD
 // ==============================
 
-function atualizarDashboard(){
-
+function atualizarDashboard() {
     totalFotos.textContent = imagens.length;
-
-    totalFavoritos.textContent = favoritos.length;
-
     categoriaAtual.textContent = categoriaSelecionada;
+}
+
+// ==============================
+// CURTIDAS FIREBASE
+// ==============================
+
+async function carregarCurtidas() {
+
+    for (const imagem of imagens) {
+
+        const referencia = doc(db, "curtidas", imagem.id);
+
+        const documento = await getDoc(referencia);
+
+        if (!documento.exists()) {
+
+            await setDoc(referencia, {
+                titulo: imagem.titulo,
+                curtidas: 0
+            });
+
+            curtidas[imagem.id] = 0;
+
+        } else {
+
+            curtidas[imagem.id] = documento.data().curtidas;
+
+        }
+
+        onSnapshot(referencia, (snapshot) => {
+
+            curtidas[imagem.id] = snapshot.data().curtidas;
+
+            criarGaleria();
+
+        });
+
+    }
 
 }
 
+// ==============================
+// CURTIR
+// ==============================
+
+async function curtir(id) {
+
+    const referencia = doc(db, "curtidas", id);
+
+    await updateDoc(referencia, {
+
+        curtidas: increment(1)
+
+    });
+
+}
+
+// ==============================
+// CRIAR GALERIA
+// ==============================
+
+function criarGaleria(lista = imagens) {
+
     galeria.innerHTML = "";
 
-    lista.forEach((imagem, index)=>{
+    lista.forEach((imagem) => {
 
-        const curtido = favoritos.includes(imagem.titulo);
+        const total = curtidas[imagem.id] || 0;
 
         galeria.innerHTML += `
-
         <div class="card">
 
             <img
                 src="${imagem.arquivo}"
                 alt="${imagem.titulo}"
-                onclick="abrirLightbox(${index})"
+                onclick="abrirLightbox('${imagem.id}')"
             >
 
             <div class="conteudo">
@@ -147,18 +173,16 @@ function atualizarDashboard(){
 
                 <p>${imagem.descricao}</p>
 
+                <p>❤️ ${total} curtidas</p>
+
                 <div class="acoes">
 
-                    <button onclick="favoritar(${index})">
-
-                        ${curtido ? "💖 Curtido" : "❤️ Curtir"}
-
+                    <button onclick="curtir('${imagem.id}')">
+                        ❤️ Curtir
                     </button>
 
-                    <button onclick="abrirLightbox(${index})">
-
+                    <button onclick="abrirLightbox('${imagem.id}')">
                         👁 Ver
-
                     </button>
 
                 </div>
@@ -166,7 +190,6 @@ function atualizarDashboard(){
             </div>
 
         </div>
-
         `;
 
     });
@@ -178,9 +201,11 @@ function atualizarDashboard(){
 // LIGHTBOX
 // ==============================
 
-function abrirLightbox(indice){
+function abrirLightbox(id) {
 
-    const imagem = imagens[indice];
+    const imagem = imagens.find(img => img.id === id);
+
+    if (!imagem) return;
 
     imagemExpandida.src = imagem.arquivo;
     tituloImagem.textContent = imagem.titulo;
@@ -190,7 +215,7 @@ function abrirLightbox(indice){
 
 }
 
-function fecharLightbox(){
+function fecharLightbox() {
 
     lightbox.style.display = "none";
 
@@ -200,20 +225,21 @@ document
 .getElementById("fechar")
 .addEventListener("click", fecharLightbox);
 
-lightbox.addEventListener("click", function(e){
+lightbox.addEventListener("click", (e) => {
 
-    if(e.target === lightbox){
+    if (e.target === lightbox) {
 
         fecharLightbox();
 
     }
 
 });
+
 // ==============================
 // PESQUISA
 // ==============================
 
-pesquisa.addEventListener("input", function(){
+pesquisa.addEventListener("input", () => {
 
     const texto = pesquisa.value.toLowerCase();
 
@@ -230,23 +256,26 @@ pesquisa.addEventListener("input", function(){
     criarGaleria(resultado);
 
 });
+
 // ==============================
 // CATEGORIAS
 // ==============================
 
-const botoesCategorias = document.querySelectorAll(".categorias button");
+const botoesCategorias =
+document.querySelectorAll(".categorias button");
 
 botoesCategorias.forEach(botao => {
 
     botao.addEventListener("click", () => {
 
-        botoesCategorias.forEach(b => b.classList.remove("ativo"));
+        botoesCategorias.forEach(b =>
+            b.classList.remove("ativo"));
 
         botao.classList.add("ativo");
 
         categoriaSelecionada = botao.textContent;
 
-        if(categoriaSelecionada === "Todas"){
+        if (categoriaSelecionada === "Todas") {
 
             criarGaleria();
 
@@ -254,19 +283,22 @@ botoesCategorias.forEach(botao => {
 
         }
 
-        const filtradas = imagens.filter(imagem =>
+        criarGaleria(
 
-            imagem.categoria === categoriaSelecionada
+            imagens.filter(imagem =>
+
+                imagem.categoria === categoriaSelecionada
+
+            )
 
         );
-
-        criarGaleria(filtradas);
 
     });
 
 });
+
 // ==============================
-// TEMA CLARO / ESCURO
+// TEMA
 // ==============================
 
 const botaoTema = document.getElementById("tema");
@@ -280,6 +312,8 @@ botaoTema.addEventListener("click", () => {
 // ==============================
 // INICIALIZAÇÃO
 // ==============================
+
+await carregarCurtidas();
 
 criarGaleria();
 
